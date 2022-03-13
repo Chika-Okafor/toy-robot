@@ -86,6 +86,18 @@ textarea {
 /* ==========================================================================
    Author's custom styles
    ========================================================================== */
+table {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+td {
+  background-color: #ba7a3a;
+  height: 100px;
+  text-align: center;
+  width: 100px;
+}
 
 /* ==========================================================================
    Helper classes
@@ -260,4 +272,3 @@ textarea {
     page-break-after: avoid;
   }
 }
-
