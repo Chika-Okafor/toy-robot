@@ -25,44 +25,102 @@
 <body>
 
   <!-- Add your site or application content here -->
+  <div id="game-ui">
+    <table id="game-board">
+      <tr class="row-5">
+        <td class="empty-cell col-1"></td>
+        <td class="empty-cell col-2"></td>
+        <td class="empty-cell col-3"></td>
+        <td class="empty-cell col-4"></td>
+        <td class="empty-cell col-5"></td>
+      </tr>
+      <tr class="row-4">
+        <td class="empty-cell col-1"></td>
+        <td class="empty-cell col-2"></td>
+        <td class="empty-cell col-3"></td>
+        <td class="empty-cell col-4"></td>
+        <td class="empty-cell col-5"></td>
+      </tr>
+      <tr class="row-3">
+        <td class="empty-cell col-1"></td>
+        <td class="empty-cell col-2"></td>
+        <td class="empty-cell col-3"></td>
+        <td class="empty-cell col-4"></td>
+        <td class="empty-cell col-5"></td>
+      </tr>
+      <tr class="row-2">
+        <td class="empty-cell col-1"></td>
+        <td class="empty-cell col-2"></td>
+        <td class="empty-cell col-3"></td>
+        <td class="empty-cell col-4"></td>
+        <td class="empty-cell col-5"></td>
+      </tr>
+      <tr class="row-1">
+        <td class="empty-cell col-1"></td>
+        <td class="empty-cell col-2"></td>
+        <td class="empty-cell col-3"></td>
+        <td class="empty-cell col-4"></td>
+        <td class="empty-cell col-5"></td>
+      </tr>
+    </table>
 
-  <table>
-    <tr class="row-5">
-      <td class="empty-cell col-1"></td>
-      <td class="empty-cell col-2"></td>
-      <td class="empty-cell col-3"></td>
-      <td class="empty-cell col-4"></td>
-      <td class="empty-cell col-5"></td>
-    </tr>
-    <tr class="row-4">
-      <td class="empty-cell col-1"></td>
-      <td class="empty-cell col-2"></td>
-      <td class="empty-cell col-3"></td>
-      <td class="empty-cell col-4"></td>
-      <td class="empty-cell col-5"></td>
-    </tr>
-    <tr class="row-3">
-      <td class="empty-cell col-1"></td>
-      <td class="empty-cell col-2"></td>
-      <td class="empty-cell col-3"></td>
-      <td class="empty-cell col-4"></td>
-      <td class="empty-cell col-5"></td>
-    </tr>
-    <tr class="row-2">
-      <td class="empty-cell col-1"></td>
-      <td class="empty-cell col-2"></td>
-      <td class="empty-cell col-3"></td>
-      <td class="empty-cell col-4"></td>
-      <td class="empty-cell col-5"></td>
-    </tr>
-    <tr class="row-1">
-      <td class="empty-cell col-1"></td>
-      <td class="empty-cell col-2"></td>
-      <td class="empty-cell col-3"></td>
-      <td class="empty-cell col-4"></td>
-      <td class="empty-cell col-5"></td>
-    </tr>
-  </table>
+    <div id="game-ctrls">
+      <div id="place-robot-ctrls">
+        <button id="place-robot">PLACE ROBOT</button>
+        <label for="row">ROW</label>
+        <select name="row" class="row">
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
+        </select>
+        <label for="column">COLUMN</label>
+        <select name="column" class="column">
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
+        </select>
+        <label for="facing">FACING</label>
+        <select name="facing" class="facing">
+          <option>NORTH</option>
+          <option>SOUTH</option>
+          <option>EAST</option>
+          <option>WEST</option>
+        </select>
+      </div>
+
+      <div id="place-wall-ctrls">
+        <button id="place-wall">PLACE WALL</button>
+        <label for="row">ROW</label>
+        <select name="row" class="row">
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
+        </select>
+        <label for="column">COLUMN</label>
+        <select name="column" class="column">
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
+        </select>
+      </div>
+
+      <div id="rotate-robot-ctrls">
+        <button>LEFT</button>
+        <button>RIGHT</button>
+      </div>
+
+      <button>REPORT</button>
+      <button>MOVE</button>
+    </div>
+  </div>
 
   
   <script src="js/vendor/modernizr-3.11.2.min.js"></script>

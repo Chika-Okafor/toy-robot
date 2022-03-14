@@ -86,10 +86,30 @@ textarea {
 /* ==========================================================================
    Author's custom styles
    ========================================================================== */
-table {
+
+body {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  width: 100%;
+}
+
+#game-ui {
+  border: 1px solid red;
+  display: flex;
+  align-items: flex-start;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+  margin-top: 100px;
+  width: 80%;
+}
+
+#game-board {
+  border: 1px solid red;
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 50%;
 }
 
 td {
@@ -97,6 +117,16 @@ td {
   height: 100px;
   text-align: center;
   width: 100px;
+}
+
+#game-ctrls {
+  border: 1px solid red;
+  display: flex;
+  align-items: flex-start;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  padding: 50px;
+  width: 50%;
 }
 
 /* ==========================================================================
