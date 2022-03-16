@@ -1,4 +1,5 @@
 const allCells = document.querySelectorAll("td");
+let robotPosition = document.querySelector("td .robot");
 const wallCell = document.querySelectorAll("td .wall");
 const emptyCells = document.querySelector("td .empty-cell");
 const placedItem = document.getElementById("place-item");
@@ -25,29 +26,24 @@ submit.addEventListener("click", function (e) {
     const selectedDirection = facingInput.value;
     
     if (placedItem.value === "ROBOT") {
-        placeRobot(selectedRow, selectedColumn);
-        //setFacingDirection(selectedDirection);
+        placeRobot(selectedRow, selectedColumn, selectedDirection);
+        
     }
-   /** const changeBg = document.querySelector("#row-1 #col-1");
-    changeBg.classList.remove("empty-cell");
-    changeBg.classList.add("robot");
-    console.log(changeBg);**/
 });
 
 
-const placeRobot = (row, column) => {
+const placeRobot = (row, column, facing) => {
     const rowID = `#row-${Number(row)}`;
     const cellID = `#cell-${(5 * (Number(row) - 1)) + Number(column)}`;
-    let robotPosition = document.querySelector("td .robot");
-    
+
     if (robotPosition === null) {
         const newRobot = document.querySelector(`${rowID} ${cellID}`);
         console.log(row, column);
         console.log(robotPosition);
         console.log(newRobot);
         newRobot.classList.replace("empty-cell", "robot");
+        newRobot.innerHTML = `<i class='fa-solid fa-robot fa-xl'></i>${setFacingDirection(facing)}`;
         robotPosition = newRobot;
-        //newRobot.classList.add("fa-solid fa-robot");
     } else if (robotPosition !== null) {
         newRobot = document.querySelector(`${rowID} ${cellID}`);
         console.log(row, column);
@@ -56,27 +52,33 @@ const placeRobot = (row, column) => {
 
         if (robotPosition !== newRobot) {
             robotPosition.classList.replace("robot", "empty-cell");
+            robotPosition.innerHTML = "";
             newRobot.classList.replace("empty-cell", "robot");
+            newRobot.innerHTML = `<i class='fa-solid fa-robot fa-xl'></i>${setFacingDirection(facing)}`;
             robotPosition = newRobot;
-            //newRobot.classList.add("fa-solid fa-robot");
-        }
+        };
     }
-    
-    
-
-    
 };
 
 
 
+
+
+
 const setFacingDirection = (facing) => {
+    let robotIcon = "";
     if (facing === "NORTH") {
-        robotCell.classList.add("fa-solid fa-arrow-up")
+        robotIcon += "<i class='fa-solid fa-arrow-up'></i>";
+        console.log(robotIcon);
     } else if (facing === "EAST") {
-        robotCell.classList.add("fa-solid fa-arrow-right")
+        robotIcon += "<i class='fa-solid fa-arrow-right'></i>";
+        console.log(robotIcon);
     } else if (facing === "SOUTH") {
-        robotCell.classList.add("fa-solid fa-arrow-down")
+        robotIcon += "<i class='fa-solid fa-arrow-down'></i>";
+        console.log(robotIcon);
     } else {
-        robotCell.classList.add("fa-solid fa-arrow-left")
+        robotIcon += "<i class='fa-solid fa-arrow-left'></i>";
+        console.log(robotIcon);
     };
+    return robotIcon;
 };
