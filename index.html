@@ -19,6 +19,9 @@
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/main.css">
 
+  <!-- FONT AWESOME CDN-->
+  <script src="https://kit.fontawesome.com/c195899235.js" crossorigin="anonymous"></script>
+
   <meta name="theme-color" content="#fafafa">
 </head>
 
@@ -27,98 +30,95 @@
   <!-- Add your site or application content here -->
   <div id="game-ui">
     <table id="game-board">
-      <tr class="row-5">
-        <td class="empty-cell col-1"></td>
-        <td class="empty-cell col-2"></td>
-        <td class="empty-cell col-3"></td>
-        <td class="empty-cell col-4"></td>
-        <td class="empty-cell col-5"></td>
+      <tr id="row-5">
+        <td class="empty-cell" id="cell-21"></td>
+        <td class="empty-cell" id="cell-22"></td>
+        <td class="empty-cell" id="cell-23"></td>
+        <td class="empty-cell" id="cell-24"></td>
+        <td class="empty-cell" id="cell-25"></td>
       </tr>
-      <tr class="row-4">
-        <td class="empty-cell col-1"></td>
-        <td class="empty-cell col-2"></td>
-        <td class="empty-cell col-3"></td>
-        <td class="empty-cell col-4"></td>
-        <td class="empty-cell col-5"></td>
+      <tr id="row-4">
+        <td class="empty-cell" id="cell-16"></td>
+        <td class="empty-cell" id="cell-17"></td>
+        <td class="empty-cell" id="cell-18"><i class="fa-solid fa-robot"></i></td>
+        <td class="empty-cell" id="cell-19"></td>
+        <td class="empty-cell" id="cell-20"></td>
       </tr>
-      <tr class="row-3">
-        <td class="empty-cell col-1"></td>
-        <td class="empty-cell col-2"></td>
-        <td class="empty-cell col-3"></td>
-        <td class="empty-cell col-4"></td>
-        <td class="empty-cell col-5"></td>
+      <tr id="row-3">
+        <td class="empty-cell" id="cell-11"></td>
+        <td class="empty-cell" id="cell-12"></td>
+        <td class="empty-cell" id="cell-13"></td>
+        <td class="empty-cell" id="cell-14"></td>
+        <td class="empty-cell" id="cell-15"></td>
       </tr>
-      <tr class="row-2">
-        <td class="empty-cell col-1"></td>
-        <td class="empty-cell col-2"></td>
-        <td class="empty-cell col-3"></td>
-        <td class="empty-cell col-4"></td>
-        <td class="empty-cell col-5"></td>
+      <tr id="row-2">
+        <td class="empty-cell" id="cell-6"></td>
+        <td class="empty-cell" id="cell-7"></td>
+        <td class="empty-cell" id="cell-8"></td>
+        <td class="empty-cell" id="cell-9"></td>
+        <td class="empty-cell" id="cell-10"></td>
       </tr>
-      <tr class="row-1">
-        <td class="empty-cell col-1"></td>
-        <td class="empty-cell col-2"></td>
-        <td class="empty-cell col-3"></td>
-        <td class="empty-cell col-4"></td>
-        <td class="empty-cell col-5"></td>
+      <tr id="row-1">
+        <td class="empty-cell" id="cell-1"></td>
+        <td class="empty-cell" id="cell-2"></td>
+        <td class="empty-cell" id="cell-3"></td>
+        <td class="empty-cell" id="cell-4"></td>
+        <td class="empty-cell" id="cell-5"></td>
       </tr>
     </table>
 
     <div id="game-ctrls">
-      <div id="place-robot-ctrls">
-        <button id="place-robot">PLACE ROBOT</button>
+      <div id="place-item-ctrls">
+        <label for="place-item">PLACE ITEM</label>
+        <select name="place-item" id="place-item">
+          <option selected>Select Item to Place</option>
+          <option>ROBOT</option>
+          <option>WALL</option>
+        </select>
+
         <label for="row">ROW</label>
-        <select name="row" class="row">
+        <select name="row" id="row">
+          <option selected>Select Row</option>
           <option>1</option>
           <option>2</option>
           <option>3</option>
           <option>4</option>
           <option>5</option>
         </select>
+
         <label for="column">COLUMN</label>
-        <select name="column" class="column">
+        <select name="column" id="column">
+          <option selected>Select Column</option>
           <option>1</option>
           <option>2</option>
           <option>3</option>
           <option>4</option>
           <option>5</option>
         </select>
+
         <label for="facing">FACING</label>
-        <select name="facing" class="facing">
+        <select name="facing" id="facing">
+          <option selected>Choose Direction</option>
           <option>NORTH</option>
           <option>SOUTH</option>
           <option>EAST</option>
           <option>WEST</option>
         </select>
-      </div>
-
-      <div id="place-wall-ctrls">
-        <button id="place-wall">PLACE WALL</button>
-        <label for="row">ROW</label>
-        <select name="row" class="row">
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4</option>
-          <option>5</option>
-        </select>
-        <label for="column">COLUMN</label>
-        <select name="column" class="column">
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4</option>
-          <option>5</option>
-        </select>
+        
+        <button id="submit">GO!</button>
       </div>
 
       <div id="rotate-robot-ctrls">
-        <button>LEFT</button>
-        <button>RIGHT</button>
+        <button id="rotate-left-btn">LEFT</button>
+        <button id="rotate-right-btn">RIGHT</button>
       </div>
 
-      <button>REPORT</button>
-      <button>MOVE</button>
+      <div id="report">
+        <button id="report-btn">REPORT</button>
+        <span id="report-text"></span>
+      </div>
+
+      <button id="move-btn">MOVE</button>
     </div>
   </div>
 

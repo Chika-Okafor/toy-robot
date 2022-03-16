@@ -129,6 +129,43 @@ td {
   width: 50%;
 }
 
+#place-item-ctrls,
+#rotate-robot-ctrls,
+#report,
+#move {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-flow: row wrap;
+  margin: 10px 0;
+}
+
+label {
+  margin-right: 10px;
+}
+
+select {
+  margin-right: 20px;
+}
+
+#rotate-right {
+  margin-left: 20px;
+}
+
+#report-text {
+  border: 1px solid red;
+  margin-left: 20px;
+}
+
+.robot {
+  background-color: #000;
+  color: #ccc;
+}
+
+.fa-robot {
+  color: white;
+}
+
 /* ==========================================================================
    Helper classes
    ========================================================================== */
