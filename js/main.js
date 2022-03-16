@@ -28,6 +28,8 @@ submit.addEventListener("click", function (e) {
     if (placedItem.value === "ROBOT") {
         placeRobot(selectedRow, selectedColumn, selectedDirection);
         
+    } else if (placedItem.value === "WALL") {
+        placeWall(selectedRow, selectedColumn)
     }
 });
 
@@ -61,11 +63,27 @@ const placeRobot = (row, column, facing) => {
 };
 
 
+const placeWall = (row, column) => {
+    const rowID = `#row-${Number(row)}`;
+    const cellID = `#cell-${(5 * (Number(row) - 1)) + Number(column)}`;
+
+    const checkPoint = document.querySelector(`${rowID} ${cellID}`);
+    const wallClassName = checkPoint.getAttribute("class");
+    console.log(checkPoint);
+
+    if (checkPoint.getAttribute("class") === "empty-cell") {
+        checkPoint.classList.replace("empty-cell", "wall");
+        console.log(checkPoint);
+    } else if (checkPoint.getAttribute("class") === "robot") {
+        message = `there is a robot currently on row ${row}, column ${column}`;
+    }
+};
 
 
 
 
-const setFacingDirection = (facing) => {
+
+const setFacingDirection = facing => {
     let robotIcon = "";
     if (facing === "NORTH") {
         robotIcon += "<i class='fa-solid fa-arrow-up'></i>";
