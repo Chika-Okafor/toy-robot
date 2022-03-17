@@ -112,6 +112,15 @@ body {
   width: 50%;
 }
 
+#interactions {
+  border: 1px solid red;
+  display: flex;
+  align-items: flex-start;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  width: 50%;
+}
+
 td {
   background-color: #ba7a3a;
   height: 100px;
@@ -126,7 +135,7 @@ td {
   flex-flow: column nowrap;
   justify-content: flex-start;
   padding: 50px;
-  width: 50%;
+  width: 100%;
 }
 
 #place-item-ctrls,
@@ -168,6 +177,16 @@ select {
 
 .wall {
   background-color: #fff;
+}
+
+#ui-messages {
+  border: 1px solid red;
+  color: orange;
+  display: flex;
+  align-items: flex-start;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  width: 100%;
 }
 
 /* ==========================================================================

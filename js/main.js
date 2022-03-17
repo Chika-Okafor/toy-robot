@@ -12,6 +12,8 @@ const rotateRightBtn = document.getElementById("rotate-right-btn");
 const moveBtn = document.getElementById("move-btn");
 
 
+let selectedRow = rowInput.value;
+let selectedColumn = columnInput.value;
 let robotFacingDirection = "";
 
 //ENABLES SELECT ELEMENT FOR FACING DIRECTION WHEN PLACING A ROBOT ON THE BOARD
@@ -24,8 +26,8 @@ placedItem.onchange = function () {
 
 submit.addEventListener("click", function (e) {
     e.preventDefault();
-    const selectedRow = rowInput.value;
-    const selectedColumn = columnInput.value;
+    selectedRow = rowInput.value;
+    selectedColumn = columnInput.value;
     robotFacingDirection = facingInput.value;
     
     if (placedItem.value === "ROBOT") {
@@ -38,11 +40,11 @@ submit.addEventListener("click", function (e) {
 
 
 const placeRobot = (row, column, facing) => {
-    const rowID = `#row-${Number(row)}`;
+    const rowID = "#row-" + row;
     const cellID = `#cell-${(5 * (Number(row) - 1)) + Number(column)}`;
 
     if (robotPosition === null) {
-        const newRobot = document.querySelector(`${rowID} ${cellID}`);
+        let newRobot = document.querySelector(`${rowID} ${cellID}`);
         console.log(row, column);
         console.log(robotPosition);
         console.log(newRobot);
@@ -50,6 +52,7 @@ const placeRobot = (row, column, facing) => {
         newRobot.innerHTML = `<i class='fa-solid fa-robot fa-xl'></i>${setFacingDirection(facing)}`;
         console.log(robotFacingDirection);
         robotPosition = newRobot;
+        console.log(robotPosition);
     } else if (robotPosition !== null) {
         newRobot = document.querySelector(`${rowID} ${cellID}`);
         console.log(row, column);
@@ -63,8 +66,9 @@ const placeRobot = (row, column, facing) => {
             newRobot.innerHTML = `<i class='fa-solid fa-robot fa-xl'></i>${setFacingDirection(facing)}`;
             console.log(robotFacingDirection);
             robotPosition = newRobot;
+            console.log(robotPosition);
         };
-    }
+    };
 };
 
 
@@ -149,10 +153,110 @@ rotateRightBtn.addEventListener("click", function (e) {
     
 });
 
+/*const moveRobot = (row, column, facing) => {
+    const rowID = "#row-" + row;
+    console.log(row);
+    console.log(rowID);
+    const cellID = "#cell-" + column;
+    console.log(column);
+    console.log(cellID);
+    console.log(robotPosition);
 
+    let newRobot = document.querySelector(`${rowID} ${cellID}`);
+    console.log(newRobot);
+
+    if (newRobot.getAttribute("class") === "empty-cell") {
+
+        robotPosition.classList.replace("robot", "empty-cell");
+        robotPosition.innerHTML = "";
+        console.log(robotPosition);
+        newRobot.classList.replace("empty-cell", "robot");
+        newRobot.innerHTML = `<i class='fa-solid fa-robot fa-xl'></i>${setFacingDirection(facing)}`;
+        console.log(newRobot);
+    };
 
     
+};*/
+
+
+const moveRobot = (row, column, facing) => {
+    const rowID = "#row-" + row;
+    const cellID = "#cell-" + column;
+
+    if (robotPosition === null) {
+        let newRobot = document.querySelector(`${rowID} ${cellID}`);
+        console.log(row, column);
+        console.log(robotPosition);
+        console.log(newRobot);
+        newRobot.classList.replace("empty-cell", "robot");
+        newRobot.innerHTML = `<i class='fa-solid fa-robot fa-xl'></i>${setFacingDirection(facing)}`;
+        console.log(robotFacingDirection);
+        robotPosition = newRobot;
+        console.log(robotPosition);
+    } else if (robotPosition !== null) {
+        newRobot = document.querySelector(`${rowID} ${cellID}`);
+        console.log(row, column);
+        console.log(robotPosition);
+        console.log(newRobot);
+
+        if (robotPosition !== newRobot) {
+            robotPosition.classList.replace("robot", "empty-cell");
+            robotPosition.innerHTML = "";
+            newRobot.classList.replace("empty-cell", "robot");
+            newRobot.innerHTML = `<i class='fa-solid fa-robot fa-xl'></i>${setFacingDirection(facing)}`;
+            console.log(robotFacingDirection);
+            robotPosition = newRobot;
+            console.log(robotPosition);
+        };
+    };
+};
+
+
+const checkBoardBoundaries = (boardBoundary, xCoordinate, yCoordinate, robotFacingDirection) => {
+    if (boardBoundary.includes(Number(xCoordinate)) && boardBoundary.includes(Number(yCoordinate))) {
+        moveRobot(xCoordinate, yCoordinate, robotFacingDirection);
+    };
+};
+
+
+moveBtn.addEventListener("click", function (e) {
+    e.preventDefault();
     
+    let xCoordinate = robotPosition.parentElement.getAttribute("id")[4];
+    console.log(xCoordinate);
+    let yCoordinate = robotPosition.getAttribute("id").slice(5);
+    console.log(yCoordinate);
+    console.log(robotFacingDirection);
+    const xBoundary = [1, 2, 3, 4, 5];
+    let yBoundary = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25];
+
+    if (xCoordinate && yCoordinate !== null) {
+        if (robotFacingDirection === "NORTH") {
+            xCoordinate = `${Number(xCoordinate) + 1}`;
+            yCoordinate = `${Number(yCoordinate) + 5}`;
+            if (xBoundary.includes(Number(xCoordinate)) && yBoundary.includes(Number(yCoordinate))) {
+                moveRobot(xCoordinate, yCoordinate, robotFacingDirection);
+            };
+        } else if (robotFacingDirection === "EAST") {
+            yCoordinate = `${Number(yCoordinate) + 1}`;
+            yBoundary = [2, 3, 4, 5, 7, 8, 9, 10, 12, 13, 14, 15, 17, 18, 19, 20, 22, 23, 24, 25];
+            if (xBoundary.includes(Number(xCoordinate)) && yBoundary.includes(Number(yCoordinate))) {
+                moveRobot(xCoordinate, yCoordinate, robotFacingDirection);
+            };
+        } else if (robotFacingDirection === "SOUTH") {
+            xCoordinate = `${Number(xCoordinate) - 1}`;
+            yCoordinate = `${Number(yCoordinate) - 5}`;
+            if (xBoundary.includes(Number(xCoordinate)) && yBoundary.slice().includes(Number(yCoordinate))) {
+                moveRobot(xCoordinate, yCoordinate, robotFacingDirection);
+            };
+        } else {
+            yCoordinate = `${Number(yCoordinate) - 1}`;
+            yBoundary = [1, 2, 3, 4, 6, 7, 8, 9, 11, 12, 13, 14, 16, 17, 18, 19, 21, 22, 23, 24];
+            if (xBoundary.includes(Number(xCoordinate)) && yBoundary.includes(Number(yCoordinate))) {
+                moveRobot(xCoordinate, yCoordinate, robotFacingDirection);
+            };
+        };
+    };
 });
 
 
