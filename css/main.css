@@ -87,21 +87,43 @@ textarea {
    Author's custom styles
    ========================================================================== */
 
+* {
+  box-sizing: border-box;
+}
+
 body {
+  align-items: center;
+  border: 1px solid red;
   display: flex;
-  align-items: flex-start;
+  flex-flow: row wrap;
   justify-content: center;
   width: 100%;
+}
+
+header {
+  align-items: flex-start;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+header #game-title {
+  color: #000;
+  word-spacing: 20px;
+}
+
+#game-title .fa-robot {
+  color: #000;
 }
 
 #game-ui {
   border: 1px solid red;
   display: flex;
-  align-items: flex-start;
-  flex-flow: row nowrap;
-  justify-content: flex-start;
-  margin-top: 100px;
-  width: 80%;
+  align-items: center;
+  flex-flow: row wrap;
+  justify-content: center;
+  margin-top: 30px;
+  width: 90%;
 }
 
 #game-board {
@@ -181,12 +203,18 @@ select {
 
 #ui-messages {
   border: 1px solid red;
-  color: orange;
   display: flex;
   align-items: flex-start;
   flex-flow: column nowrap;
   justify-content: flex-start;
   width: 100%;
+}
+
+#message {
+  color: orange;
+  font-size: larger;
+  font-weight: 600;
+  text-align: center;
 }
 
 /* ==========================================================================

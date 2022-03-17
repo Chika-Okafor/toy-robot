@@ -10,6 +10,8 @@ const submit = document.getElementById("submit");
 const rotateLeftBtn = document.getElementById("rotate-left-btn");
 const rotateRightBtn = document.getElementById("rotate-right-btn");
 const moveBtn = document.getElementById("move-btn");
+const reportBtn = document.getElementById("report-btn");
+let message = document.getElementById("message");
 
 
 let selectedRow = rowInput.value;
@@ -30,12 +32,17 @@ submit.addEventListener("click", function (e) {
     selectedColumn = columnInput.value;
     robotFacingDirection = facingInput.value;
     
-    if (placedItem.value === "ROBOT") {
+    if ((placedItem.value === "ROBOT") && (selectedColumn && selectedRow && robotFacingDirection !== null)) {
         placeRobot(selectedRow, selectedColumn, robotFacingDirection);
         
-    } else if (placedItem.value === "WALL") {
+    } else if ((placedItem.value === "WALL") && (selectedColumn && selectedRow !== null)) {
         placeWall(selectedRow, selectedColumn)
     };
+
+    placedItem.value = "";
+    rowInput.value = "";
+    columnInput.value = "";
+    facingInput.value = "";
 });
 
 
@@ -53,7 +60,7 @@ const placeRobot = (row, column, facing) => {
         console.log(robotFacingDirection);
         robotPosition = newRobot;
         console.log(robotPosition);
-    } else if (robotPosition !== null) {
+    } else {
         newRobot = document.querySelector(`${rowID} ${cellID}`);
         console.log(row, column);
         console.log(robotPosition);
@@ -260,9 +267,24 @@ moveBtn.addEventListener("click", function (e) {
 });
 
 
+reportBtn.addEventListener("click", function (e) {
+    e.preventDefault();
+    
+    let xCoordinate = robotPosition.parentElement.getAttribute("id")[4];
+    console.log(xCoordinate);
+    let yCoordinate = robotPosition.getAttribute("id").slice(5);
+    console.log(yCoordinate);
+    console.log(robotFacingDirection);
+
+    const columNumber = (Number(yCoordinate) - ((Number(xCoordinate) - 1) * 5));
+
+    message.innerText = `ROBOT IS POSITIONED AT ${xCoordinate}, ${columNumber} ${robotFacingDirection}`;
+});
 
 
-const setFacingDirection = facing => {
+
+
+function setFacingDirection(facing) {
     let robotIcon = "";
     if (facing === "NORTH") {
         robotIcon += "<i class='fa-solid fa-arrow-up' id='direction'></i>";
@@ -278,4 +300,4 @@ const setFacingDirection = facing => {
         console.log(robotIcon);
     };
     return robotIcon;
-};
+}
