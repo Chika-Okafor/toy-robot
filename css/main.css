@@ -96,125 +96,201 @@ body {
   border: 1px solid red;
   display: flex;
   flex-flow: row wrap;
+  font-family: "Fredoka", sans-serif;
   justify-content: center;
   width: 100%;
 }
 
 header {
-  align-items: flex-start;
+  align-items: center;
   display: flex;
   justify-content: center;
   width: 100%;
 }
 
 header #game-title {
-  color: #000;
-  word-spacing: 20px;
+  color: #30c5ff;
+  font-family: "Orbitron", sans-serif;
+  word-spacing: 10px;
+  letter-spacing: 2px;
 }
 
 #game-title .fa-robot {
-  color: #000;
+  color: #777f92;
 }
 
 #game-ui {
-  border: 1px solid red;
-  display: flex;
   align-items: center;
+  display: flex;
   flex-flow: row wrap;
   justify-content: center;
-  margin-top: 30px;
   width: 90%;
 }
 
 #game-board {
-  border: 1px solid red;
-  display: flex;
   align-items: center;
+  display: flex;
+  flex-flow: row wrap;
   justify-content: center;
-  width: 50%;
-}
-
-#interactions {
-  border: 1px solid red;
-  display: flex;
-  align-items: flex-start;
-  flex-flow: column nowrap;
-  justify-content: flex-start;
-  width: 50%;
-}
-
-td {
-  background-color: #ba7a3a;
-  height: 100px;
-  text-align: center;
-  width: 100px;
-}
-
-#game-ctrls {
-  border: 1px solid red;
-  display: flex;
-  align-items: flex-start;
-  flex-flow: column nowrap;
-  justify-content: flex-start;
-  padding: 50px;
+  margin-bottom: 30px;
   width: 100%;
 }
 
-#place-item-ctrls,
-#rotate-robot-ctrls,
-#report,
-#move {
-  display: flex;
+#game-board tr {
   align-items: center;
-  justify-content: space-between;
-  flex-flow: row wrap;
-  margin: 10px 0;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
 }
 
-label {
-  margin-right: 10px;
-}
-
-select {
-  margin-right: 20px;
-}
-
-#rotate-right {
-  margin-left: 20px;
-}
-
-#report-text {
-  border: 1px solid red;
-  margin-left: 20px;
+td {
+  align-items: center;
+  border: 1px solid #777f92;
+  background-color: #fff;
+  display: flex;
+  height: 50px;
+  justify-content: space-around;
+  width: 50px;
 }
 
 .robot {
-  background-color: #000;
-  color: #ccc;
-}
-
-.fa-solid {
-  color: white;
-}
-
-.wall {
   background-color: #fff;
 }
 
-#ui-messages {
-  border: 1px solid red;
-  display: flex;
+.robot .fa-solid {
+  color: #000;
+  font-size: 15px;
+}
+
+.wall {
+  background-color: #ba7a3a;
+}
+
+#interactions {
   align-items: flex-start;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+#interactions h2,
+#interactions h3 {
+  color: #777f92;
+  font-family: "Merriweather", serif;
+  width: 100%;
+}
+
+#interactions h2 {
+  margin-bottom: 0;
+  text-align: center;
+}
+
+#interactions h3 {
+  margin: 10px 0 0;
+}
+
+#game-ctrls {
+  align-items: center;
+  display: flex;
+  flex-flow: row-reverse wrap;
+  justify-content: center;
+  width: 100%;
+}
+
+#ui-messages {
+  align-items: flex-start;
+  border: 2px solid #ccc;
+  display: flex;
   flex-flow: column nowrap;
+  height: 80px;
   justify-content: flex-start;
   width: 100%;
 }
 
 #message {
-  color: orange;
-  font-size: larger;
-  font-weight: 600;
+  color: #000;
   text-align: center;
+}
+
+#game-ctrls label {
+  font-family: "Merriweather", serif;
+  width: 30%;
+}
+
+#place-item,
+#select-row,
+#select-column,
+#select-facing-direction {
+  align-items: center;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  margin: 10px 0;
+  width: 100%;
+}
+
+#item,
+#row,
+#column,
+#facing {
+  appearance: button;
+  background-color: #0563af;
+  border: none;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+  color: white;
+  outline: none;
+  padding: 6px;
+  width: 70%;
+  -webkit-appearance: button;
+}
+
+#move,
+#report {
+  align-items: center;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  margin: 10px 0;
+  width: 100%;
+}
+
+button {
+  align-items: center;
+  background-color: #1e8449;
+  border-radius: 5px;
+  border-style: none;
+  box-shadow: rgba(39, 174, 96, 0.15) 0 4px 9px;
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  margin: 10px 0;
+  padding: 6px 0;
+  touch-action: manipulation;
+  width: 30%;
+}
+
+button:hover {
+  background-color: #27ae60;
+  box-shadow: rgba(39, 174, 96, 0.2) 0 6px 12px;
+  opacity: 1;
+}
+
+#submit {
+  margin: 15px 0 30px;
+}
+
+#rotate-robot-ctrls,
+#move,
+#report {
+  align-items: center;
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 30px;
+  width: 100%;
 }
 
 /* ==========================================================================

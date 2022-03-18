@@ -19,8 +19,13 @@
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/main.css">
 
-  <!-- FONT AWESOME CDN-->
+  <!-- FONT AWESOME ICONS-->
   <script src="https://kit.fontawesome.com/8bccf2ba24.js" crossorigin="anonymous"></script>
+
+  <!-- GOOGLE FONTS-->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300&family=Merriweather:wght@300&family=Orbitron:wght@700&display=swap" rel="stylesheet">
 
   <meta name="theme-color" content="#fafafa">
 </head>
@@ -71,16 +76,22 @@
     </table>
 
     <div id="interactions">
+      <div id="ui-messages">
+        <span id="message"></span>
+      </div>
+      <h2>GAME CONTROLS</h2>
       <div id="game-ctrls">
-        <div id="place-item-ctrls">
-          <label for="place-item">PLACE ITEM</label>
-          <select name="place-item" id="place-item">
-            <option selected>Select Item to Place</option>
-            <option>ROBOT</option>
-            <option>WALL</option>
+        <h3>Place an Item</h3>
+        <div id="place-item">
+          <label for="place-item">Item</label>
+          <select name="place-item" id="item">
+            <option selected>Select Item</option>
+            <option>Robot</option>
+            <option>Wall</option>
           </select>
-
-          <label for="row">ROW</label>
+        </div>
+        <div id="select-row">
+          <label for="row">Row</label>
           <select name="row" id="row">
             <option selected>Select Row</option>
             <option>1</option>
@@ -89,8 +100,9 @@
             <option>4</option>
             <option>5</option>
           </select>
-
-          <label for="column">COLUMN</label>
+        </div>
+        <div id="select-column">
+          <label for="column">Column</label>
           <select name="column" id="column">
             <option selected>Select Column</option>
             <option>1</option>
@@ -99,32 +111,34 @@
             <option>4</option>
             <option>5</option>
           </select>
-
-          <label for="facing">FACING</label>
+        </div>
+        <div id="select-facing-direction">
+          <label for="facing">Facing</label>
           <select name="facing" id="facing">
             <option selected>Choose Direction</option>
-            <option>NORTH</option>
-            <option>SOUTH</option>
-            <option>EAST</option>
-            <option>WEST</option>
+            <option>North</option>
+            <option>South</option>
+            <option>East</option>
+            <option>West</option>
           </select>
-          
-          <button id="submit">GO!</button>
-        </div>
-
+        </div> 
+        <button id="submit">Place</button>
+        
+        <h3>Rotate Robot 90 Degrees</h3>
         <div id="rotate-robot-ctrls">
-          <button id="rotate-left-btn">LEFT</button>
-          <button id="rotate-right-btn">RIGHT</button>
+          <button id="rotate-left-btn">Left</button>
+          <button id="rotate-right-btn">Right</button>
         </div>
 
+        <h3>Move Robot One Step</h3>
+        <div id="move">
+          <button id="move-btn">Move</button>
+        </div>
+
+        <h3>Report Robot Position</h3>
         <div id="report">
-          <button id="report-btn">REPORT</button>
+          <button id="report-btn">Report</button>
         </div>
-
-        <button id="move-btn">MOVE</button>
-      </div>
-      <div id="ui-messages">
-        <span id="message"></span>
       </div>
     </div>
   </main>

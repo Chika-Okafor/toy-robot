@@ -2,7 +2,7 @@ const allCells = document.querySelectorAll("td");
 let robotPosition = document.querySelector("td .robot");
 const wallCell = document.querySelectorAll("td .wall");
 const emptyCells = document.querySelector("td .empty-cell");
-const placedItem = document.getElementById("place-item");
+const placedItem = document.getElementById("item");
 const rowInput = document.getElementById("row");
 const columnInput = document.getElementById("column");
 const facingInput = document.getElementById("facing");
@@ -21,7 +21,7 @@ let robotFacingDirection = "";
 //ENABLES SELECT ELEMENT FOR FACING DIRECTION WHEN PLACING A ROBOT ON THE BOARD
 placedItem.onchange = function () {
     facing.setAttribute("disabled", "disabled");
-    if (this.value === "ROBOT") {
+    if (this.value === "Robot") {
       facing.removeAttribute("disabled");
     };
 };
@@ -32,10 +32,10 @@ submit.addEventListener("click", function (e) {
     selectedColumn = columnInput.value;
     robotFacingDirection = facingInput.value;
     
-    if ((placedItem.value === "ROBOT") && (selectedColumn && selectedRow && robotFacingDirection !== null)) {
+    if ((placedItem.value === "Robot") && (selectedColumn && selectedRow && robotFacingDirection !== null)) {
         placeRobot(selectedRow, selectedColumn, robotFacingDirection);
         
-    } else if ((placedItem.value === "WALL") && (selectedColumn && selectedRow !== null)) {
+    } else if ((placedItem.value === "Wall") && (selectedColumn && selectedRow !== null)) {
         placeWall(selectedRow, selectedColumn)
     };
 
@@ -102,24 +102,24 @@ rotateLeftBtn.addEventListener("click", function (e) {
     const direction = document.getElementById("direction");
 
     if (direction !== null) {
-        if (robotFacingDirection === "NORTH") {
+        if (robotFacingDirection === "North") {
             console.log(robotFacingDirection);
-            robotFacingDirection = "WEST";
+            robotFacingDirection = "West";
             direction.classList.replace("fa-arrow-up", "fa-arrow-left");
             console.log(robotFacingDirection);
-        } else if (robotFacingDirection === "EAST") {
+        } else if (robotFacingDirection === "East") {
             console.log(robotFacingDirection);
-            robotFacingDirection = "NORTH";
+            robotFacingDirection = "North";
             direction.classList.replace("fa-arrow-right", "fa-arrow-up");
             console.log(robotFacingDirection);
-        } else if (robotFacingDirection === "SOUTH") {
+        } else if (robotFacingDirection === "South") {
             console.log(robotFacingDirection);
-            robotFacingDirection = "EAST";
+            robotFacingDirection = "East";
             direction.classList.replace("fa-arrow-down", "fa-arrow-right");
             console.log(robotFacingDirection);
         } else {
             console.log(robotFacingDirection);
-            robotFacingDirection = "SOUTH";
+            robotFacingDirection = "South";
             direction.classList.replace("fa-arrow-left", "fa-arrow-down");
             console.log(robotFacingDirection);
         };
@@ -134,24 +134,24 @@ rotateRightBtn.addEventListener("click", function (e) {
     const direction = document.getElementById("direction");
 
     if (direction !== null) {
-        if (robotFacingDirection === "NORTH") {
+        if (robotFacingDirection === "North") {
             console.log(robotFacingDirection);
-            robotFacingDirection = "EAST";
+            robotFacingDirection = "East";
             direction.classList.replace("fa-arrow-up", "fa-arrow-right");
             console.log(robotFacingDirection);
-        } else if (robotFacingDirection === "EAST") {
+        } else if (robotFacingDirection === "East") {
             console.log(robotFacingDirection);
-            robotFacingDirection = "SOUTH";
+            robotFacingDirection = "South";
             direction.classList.replace("fa-arrow-right", "fa-arrow-down");
             console.log(robotFacingDirection);
-        } else if (robotFacingDirection === "SOUTH") {
+        } else if (robotFacingDirection === "South") {
             console.log(robotFacingDirection);
-            robotFacingDirection = "WEST";
+            robotFacingDirection = "West";
             direction.classList.replace("fa-arrow-down", "fa-arrow-left");
             console.log(robotFacingDirection);
         } else {
             console.log(robotFacingDirection);
-            robotFacingDirection = "NORTH";
+            robotFacingDirection = "North";
             direction.classList.replace("fa-arrow-left", "fa-arrow-up");
             console.log(robotFacingDirection);
         };
@@ -238,19 +238,19 @@ moveBtn.addEventListener("click", function (e) {
     let yBoundary = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25];
 
     if (xCoordinate && yCoordinate !== null) {
-        if (robotFacingDirection === "NORTH") {
+        if (robotFacingDirection === "North") {
             xCoordinate = `${Number(xCoordinate) + 1}`;
             yCoordinate = `${Number(yCoordinate) + 5}`;
             if (xBoundary.includes(Number(xCoordinate)) && yBoundary.includes(Number(yCoordinate))) {
                 moveRobot(xCoordinate, yCoordinate, robotFacingDirection);
             };
-        } else if (robotFacingDirection === "EAST") {
+        } else if (robotFacingDirection === "East") {
             yCoordinate = `${Number(yCoordinate) + 1}`;
             yBoundary = [2, 3, 4, 5, 7, 8, 9, 10, 12, 13, 14, 15, 17, 18, 19, 20, 22, 23, 24, 25];
             if (xBoundary.includes(Number(xCoordinate)) && yBoundary.includes(Number(yCoordinate))) {
                 moveRobot(xCoordinate, yCoordinate, robotFacingDirection);
             };
-        } else if (robotFacingDirection === "SOUTH") {
+        } else if (robotFacingDirection === "South") {
             xCoordinate = `${Number(xCoordinate) - 1}`;
             yCoordinate = `${Number(yCoordinate) - 5}`;
             if (xBoundary.includes(Number(xCoordinate)) && yBoundary.slice().includes(Number(yCoordinate))) {
@@ -286,13 +286,13 @@ reportBtn.addEventListener("click", function (e) {
 
 function setFacingDirection(facing) {
     let robotIcon = "";
-    if (facing === "NORTH") {
+    if (facing === "North") {
         robotIcon += "<i class='fa-solid fa-arrow-up' id='direction'></i>";
         console.log(robotIcon);
-    } else if (facing === "EAST") {
+    } else if (facing === "East") {
         robotIcon += "<i class='fa-solid fa-arrow-right' id='direction'></i>";
         console.log(robotIcon);
-    } else if (facing === "SOUTH") {
+    } else if (facing === "South") {
         robotIcon += "<i class='fa-solid fa-arrow-down' id='direction'></i>";
         console.log(robotIcon);
     } else {
