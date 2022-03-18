@@ -93,7 +93,6 @@ textarea {
 
 body {
   align-items: center;
-  border: 1px solid red;
   display: flex;
   flex-flow: row wrap;
   font-family: "Fredoka", sans-serif;
@@ -120,7 +119,7 @@ header #game-title {
 }
 
 #game-ui {
-  align-items: center;
+  align-items: flex-start;
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
@@ -128,7 +127,7 @@ header #game-title {
 }
 
 #game-board {
-  align-items: center;
+  align-items: flex-start;
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
@@ -150,7 +149,7 @@ td {
   background-color: #fff;
   display: flex;
   height: 50px;
-  justify-content: space-around;
+  justify-content: space-evenly;
   width: 50px;
 }
 
@@ -188,13 +187,13 @@ td {
 }
 
 #interactions h3 {
-  margin: 10px 0 0;
+  margin: 0;
 }
 
 #game-ctrls {
-  align-items: center;
+  align-items: flex-start;
   display: flex;
-  flex-flow: row-reverse wrap;
+  flex-flow: row wrap;
   justify-content: center;
   width: 100%;
 }
@@ -282,13 +281,12 @@ button:hover {
   margin: 15px 0 30px;
 }
 
-#rotate-robot-ctrls,
-#move,
-#report {
-  align-items: center;
+#rotate-robot-ctrls {
+  align-items: flex-start;
   display: flex;
+  flex-flow: row wrap;
   justify-content: space-around;
-  margin-bottom: 30px;
+  margin-bottom: 15px;
   width: 100%;
 }
 
@@ -310,7 +308,78 @@ button:hover {
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
-  ...;
+  #game-ui {
+    justify-content: space-around;
+    width: 90%;
+  }
+
+  #game-board {
+    justify-content: flex-start;
+    width: 50%;
+  }
+
+  td {
+    border: 2px solid #777f92;
+    height: 110px;
+    width: 110px;
+  }
+
+  .robot .fa-solid {
+    font-size: 40px;
+  }
+
+  #interactions {
+    justify-content: flex-end;
+    width: 50%;
+  }
+
+  #game-ctrls {
+    justify-content: space-between;
+  }
+
+  #ui-messages {
+    height: 50px;
+  }
+
+  #game-ctrls label {
+    width: 35%;
+  }
+
+  #place-item,
+  #select-row,
+  #select-column,
+  #select-facing-direction {
+    width: 50%;
+  }
+
+  #item,
+  #row,
+  #column,
+  #facing {
+    width: 50%;
+  }
+
+  #move,
+  #report {
+    align-items: flex-start;
+    justify-content: flex-start;
+    margin: 6px 0;
+  }
+
+  button {
+    margin-right: 40px;
+    padding: 8px 0;
+    width: 25%;
+  }
+
+  #rotate-robot-ctrls {
+    justify-content: flex-start;
+    width: 100%;
+  }
+
+  #submit {
+    width: 25%;
+  }
 }
 
 /* ==========================================================================
