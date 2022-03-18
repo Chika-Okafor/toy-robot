@@ -124,7 +124,7 @@ header #game-title {
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
-  width: 90%;
+  width: 80%;
 }
 
 #game-board {
@@ -200,12 +200,11 @@ td {
 }
 
 #ui-messages {
-  align-items: flex-start;
+  align-items: center;
   border: 2px solid #ccc;
   display: flex;
-  flex-flow: column nowrap;
-  height: 80px;
-  justify-content: flex-start;
+  height: 60px;
+  justify-content: center;
   width: 100%;
 }
 
@@ -291,6 +290,27 @@ button:hover {
   justify-content: space-around;
   margin-bottom: 30px;
   width: 100%;
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  #game-ui {
+    width: 60%;
+  }
+
+  td {
+    height: 70px;
+    width: 70px;
+  }
+
+  .robot .fa-solid {
+    font-size: 25px;
+  }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  ...;
 }
 
 /* ==========================================================================
