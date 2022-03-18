@@ -217,7 +217,7 @@ td {
   width: 30%;
 }
 
-#place-item,
+#place-object,
 #select-row,
 #select-column,
 #select-facing-direction {
@@ -229,7 +229,7 @@ td {
   width: 100%;
 }
 
-#item,
+#object,
 #row,
 #column,
 #facing {
@@ -352,7 +352,7 @@ button:hover {
     width: 50%;
   }
 
-  #item,
+  #object,
   #row,
   #column,
   #facing {
