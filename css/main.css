@@ -197,6 +197,7 @@ td {
   align-items: center;
   border: 2px solid #ccc;
   display: flex;
+  font-size: 0.8em;
   height: 80px;
   justify-content: center;
   margin-top: 20px;
@@ -206,7 +207,10 @@ td {
 
 #message {
   color: #000;
+  font-family: "Orbitron", sans-serif;
   text-align: center;
+  text-transform: uppercase;
+  word-spacing: 5px;
 }
 
 #game-ctrls {
@@ -424,6 +428,10 @@ button:hover {
   #ui-messages {
     height: 100px;
     margin-top: 0;
+  }
+
+  #message {
+    font-size: 1.35em;
   }
 
   #place,
