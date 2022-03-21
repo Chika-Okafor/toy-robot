@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title></title>
+  <title>TOY ROBOT</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -79,65 +79,77 @@
       <div id="ui-messages">
         <span id="message"></span>
       </div>
-      <h2>GAME CONTROLS</h2>
       <div id="game-ctrls">
-        <h3>Place an Object</h3>
-        <div id="place-object">
-          <label for="place-object">Object</label>
-          <select name="place-object" id="object">
-            <option selected>Select Object</option>
-            <option>Robot</option>
-            <option>Wall</option>
-          </select>
+        <h2>GAME CONTROLS</h2>
+        <div id="place">
+          <h3>Place an Object</h3>
+          <div id="select-ctrls">
+            <div id="place-object">
+              <label for="place-object">Object</label>
+              <select name="place-object" id="object">
+                <option selected>Select Object</option>
+                <option>Robot</option>
+                <option>Wall</option>
+              </select>
+            </div>
+            <div id="select-row">
+              <label for="row">Row</label>
+              <select name="row" id="row">
+                <option selected>Select Row</option>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+              </select>
+            </div>
+            <div id="select-column">
+              <label for="column">Column</label>
+              <select name="column" id="column">
+                <option selected>Select Column</option>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+              </select>
+            </div>
+            <div id="select-facing-direction">
+              <label for="facing">Facing</label>
+              <select name="facing" id="facing">
+                <option selected>Choose Direction</option>
+                <option>North</option>
+                <option>South</option>
+                <option>East</option>
+                <option>West</option>
+              </select>
+            </div>
+          </div>
+          <div id="place-btn">
+            <button id="submit">Place</button>
+          </div>
         </div>
-        <div id="select-row">
-          <label for="row">Row</label>
-          <select name="row" id="row">
-            <option selected>Select Row</option>
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
-          </select>
-        </div>
-        <div id="select-column">
-          <label for="column">Column</label>
-          <select name="column" id="column">
-            <option selected>Select Column</option>
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
-          </select>
-        </div>
-        <div id="select-facing-direction">
-          <label for="facing">Facing</label>
-          <select name="facing" id="facing">
-            <option selected>Choose Direction</option>
-            <option>North</option>
-            <option>South</option>
-            <option>East</option>
-            <option>West</option>
-          </select>
-        </div> 
-        <button id="submit">Place</button>
         
-        <h3>Rotate Robot 90 Degrees</h3>
-        <div id="rotate-robot-ctrls">
-          <button id="rotate-left-btn">Left</button>
-          <button id="rotate-right-btn">Right</button>
-        </div>
-
-        <h3>Move Robot One Step</h3>
-        <div id="move">
-          <button id="move-btn">Move</button>
-        </div>
-
-        <h3>Report Robot Position</h3>
-        <div id="report">
-          <button id="report-btn">Report</button>
+        <div id="secondary-ctrls">
+          <div id="rotate">
+            <h3>Rotate Robot 90 Degrees</h3>
+            <div id="rotate-left">
+              <button class="rotate-btn" id="rotate-left-btn">Left</button>
+            </div>
+            <div id="rotate-right">
+              <button class="rotate-btn" id="rotate-right-btn">Right</button>
+            </div>
+          </div>
+  
+          <div id="move">
+            <h3>Move Robot One Step</h3>
+            <button id="move-btn">Move</button>
+          </div>
+  
+          <div id="report">
+            <h3>Report Robot Position</h3>
+            <button id="report-btn">Report</button>
+          </div>
         </div>
       </div>
     </div>

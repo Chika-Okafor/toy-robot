@@ -1,4 +1,3 @@
-
 /******DECLARED VARIABLES FOR DOM MANIPULATION*******/
 //VARIABLES FOR SELECT ELEMENTS
 const placedObject = document.getElementById("object"); //HOLDS THE VALUE OF SELECTED ITEM TO BE PLACED ON BOARD (ROBOT OR WALL)
@@ -24,13 +23,30 @@ let cellID = "";
 let newRobot = "";
 
 
-const xBoundary = [1, 2, 3, 4, 5];
-const yBoundary = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25];
 
-const yEastBoundary = [5, 10, 15, 20, 25];
-const yWestBoundary = [1, 6, 11, 16, 21];
-const yNorthBoundary = [21, 22, 23, 24, 25];
-const ySouthBoundary = [1, 2, 3, 4, 5];
+const defaultObject = "Select Object";
+const defaultRow = "Select Row";
+const defaultColumn = "Select Column";
+const defaultFacing = "Choose Direction";
+
+const getBoundary = (start, end) => {
+    const range = [...Array(end - start + 1).keys()].map(x => x + start);
+    return range;
+};
+
+const getFacingBoundary = (start, end, step) => {
+    const arrayLength = Math.floor(((end - start) / step)) + 1;
+    const range = [...Array(arrayLength).keys()].map(x => (x * step) + start);
+    return range;
+};
+
+const xBoundary = getBoundary(1, 5);
+const yBoundary = getBoundary(1, 25);
+
+const yEastBoundary = getFacingBoundary(5, 25, 5);
+const yWestBoundary = getFacingBoundary(1, 21, 5);
+const yNorthBoundary = yBoundary.slice(20,25);
+const ySouthBoundary = yBoundary.slice(0, 5);
 
 
 /********** FACTORY FUNCTION FOR OBJECTS (ROBOT AND WALL) **********/
@@ -53,9 +69,9 @@ const Wall = CreateItem("Wall");
 /************ GAME MECHANICS *********/
 //DISABLES FACING DIRECTION WHEN A WALL IS BEING PLACED ON THE BOARD
 placedObject.onchange = function () {
-    facing.setAttribute("disabled", "disabled");
+    facingInput.setAttribute("disabled", "disabled");
     if (this.value === Robot.type) {
-      facing.removeAttribute("disabled");
+      facingInput.removeAttribute("disabled");
     };
 };
 
@@ -93,31 +109,49 @@ const setFacingDirection = (facing) => {
 //CREATES A NEW ROBOT IN AN EMPTY CELL
 const createNewRobot = (facing) => {
     newRobot = document.querySelector(cellID);
-    newRobot.classList.replace("empty-cell", "robot");
-    newRobot.innerHTML = `<i class='fa-solid fa-robot fa-xl'></i>${setFacingDirection(facing)}`;
-    robotPosition = newRobot;
+
+    if (newRobot.getAttribute("class") === "empty-cell") {
+        newRobot.classList.replace("empty-cell", "robot");
+        newRobot.innerHTML = `<i class='fa-solid fa-robot fa-xl'></i>${setFacingDirection(facing)}`;
+        robotPosition = newRobot;
+    } else if (newRobot.getAttribute("class") === "wall") {
+        message.innerHTML = "Are you seriously trying to place me on a wall?!";
+    };
+    message.innerHTML = `Android001 at your service!`;
 };
 
 //MOVES EXISTING ROBOT TO AN EMPTY CELL
 const moveToNewCell = (facing) => {
     newRobot = document.querySelector(cellID);
-    if (robotPosition !== newRobot) {
-        robotPosition.innerHTML = "";
-        robotPosition.classList.replace("robot", "empty-cell");
+
+    if (newRobot.getAttribute("class") === "empty-cell") {
+        if (robotPosition !== newRobot) {
+            robotPosition.innerHTML = "";
+            robotPosition.classList.replace("robot", "empty-cell");
+        };
+        newRobot.classList.replace("empty-cell", "robot");
+        newRobot.innerHTML = `<i class='fa-solid fa-robot fa-xl'></i>${setFacingDirection(facing)}`;
+        robotPosition = newRobot;
+    } else if (newRobot.getAttribute("class") === "robot") {
+        newRobot.innerHTML = `<i class='fa-solid fa-robot fa-xl'></i>${setFacingDirection(facing)}`;
+        message.innerHTML = `Confirming new facing direction...<br />`;
+    } else if (newRobot.getAttribute("class") === "wall") {
+        message.innerHTML = "I ran into a wall. Just great!";
     };
-    newRobot.classList.replace("empty-cell", "robot");
-    newRobot.innerHTML = `<i class='fa-solid fa-robot fa-xl'></i>${setFacingDirection(facing)}`;
-    robotPosition = newRobot;
+    message.innerHTML += `Android in position. Awaiting new orders!`;
 };
 
 //HANDLES PLACING OF ROBOT OBJECT ON THE BOARD
 const placeRobot = (row, column, facing) => {
     setIDs(row, column);
 
-    if (robotPosition === null) {
-        createNewRobot(facing);
-    } else {
-        moveToNewCell(facing);
+    
+    if ((placedObject.value !== defaultObject) || (rowInput.value !== defaultRow) || (columnInput.value !== defaultColumn) || (facingInput.value !== defaultFacing)) {
+        if (robotPosition === null) {
+            createNewRobot(facing);
+        } else {
+            moveToNewCell(facing);
+        };
     };
 };
 
@@ -131,21 +165,24 @@ const placeWall = (row, column) => {
     if (newWall.getAttribute("class") === "empty-cell") {
         newWall.classList.replace("empty-cell", "wall");
     } else if (newWall.getAttribute("class") === "robot") {
-        message.innerText = `Row ${row}, column ${column} is not empty!`;
+        message.innerHTML = `Row ${row}, column ${column} is not empty!`;
     };
+    
+    message.innerHTML = `Detecting a new wall at row ${row}, column ${column}!`;
 };
 
 
 //RESETS SELECT ELEMENTS VALUES
 const resetElementValues = () => {
-    placedObject.value = "Select Object";
-    rowInput.value = "Select Row";
-    columnInput.value = "Select Column";
-    facingInput.value = "Choose Direction";
+    placedObject.value = defaultObject;
+    rowInput.value = defaultRow;
+    columnInput.value = defaultColumn;
+    facingInput.value = defaultFacing;
 };
 
 //ROTATES ROBOT 90 DEGREES TO A GIVEN DIRECTION
 const rotateRobot = (rotation) => {
+    message.innerHTML = "";
     const direction = document.getElementById("direction");
 
     if (direction !== null) {
@@ -163,6 +200,7 @@ const rotateRobot = (rotation) => {
                 Robot.facing = "South";
                 direction.classList.replace("fa-arrow-left", "fa-arrow-down");
             };
+            message.innerHTML = `Affirmative! Turning left...`;
         } else if (rotation === "Right") {
             if (Robot.facing === "North") {
                 Robot.facing = "East";
@@ -177,6 +215,7 @@ const rotateRobot = (rotation) => {
                 Robot.facing = "North";
                 direction.classList.replace("fa-arrow-left", "fa-arrow-up");
             };
+            message.innerHTML = `Affirmative! Turning right...`;
         };
     };
 };
@@ -185,6 +224,7 @@ const rotateRobot = (rotation) => {
 const moveRobot = (row, column) => {
     rowID = "#row-" + row;
     cellID = "#cell-" + column;
+    message.innerHTML = `New coordinates confirmed!<br />`;
 
     if (robotPosition !== null) {
         if (newRobot === null) {
@@ -192,12 +232,11 @@ const moveRobot = (row, column) => {
         };
         moveToNewCell(Robot.facing);
     };
-    
 };
 
 //CALCULATES COORDINATES FOR MOVING THE ROBOT ONE STEP TOWARDS ITS FACING DIRECTION
 const handleMovement = () => {
-
+    message.innerHTML = "";
     let xCurrentPosition = Number(robotPosition.parentElement.getAttribute("id")[4]);
     let yCurrentPosition = Number(robotPosition.getAttribute("id").slice(5));
     let xNewPosition = 0;
@@ -254,7 +293,7 @@ const handleMovement = () => {
 //FIRES WHEN THE PLACE OBJECT BUTTON IS CLICKED. PLACES A ROBOT OR WALL ON THE BOARD
 submit.addEventListener("click", function (e) {
     e.preventDefault();
-    
+    message.innerHTML = "";
     if (placedObject.value === Robot.type) {
         setItemValues(Robot);
         placeRobot(Robot.row, Robot.column, Robot.facing);
@@ -292,11 +331,9 @@ moveBtn.addEventListener("click", function (e) {
 //FIRES WHEN THE REPORT BUTTON IS CLICKED. OUTPUTS ROBOT COORDINATES AND FACING DIRECTION
 reportBtn.addEventListener("click", function (e) {
     e.preventDefault();
-    
+    message.innerHTML = "";
     let xCurrentPosition = robotPosition.parentElement.getAttribute("id")[4];
     let yCurrentPosition = robotPosition.getAttribute("id").slice(5);
-
     const columNumber = (Number(yCurrentPosition) - ((Number(xCurrentPosition) - 1) * 5));
-
-    message.innerText = `REPORTING: Robot is positioned at ${xCurrentPosition}, ${columNumber} ${Robot.facing}`;
+    message.innerHTML = `ROUTINE REPORT: Android is positioned at ${xCurrentPosition}, ${columNumber} ${Robot.facing}`;
 });

@@ -87,6 +87,7 @@ textarea {
    Author's custom styles
    ========================================================================== */
 
+/**************************MOBILE STYLES**************************/
 * {
   box-sizing: border-box;
 }
@@ -123,6 +124,7 @@ header #game-title {
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
+  margin-top: 20px;
   width: 80%;
 }
 
@@ -174,20 +176,20 @@ td {
   width: 100%;
 }
 
-#interactions h2,
-#interactions h3 {
-  color: #777f92;
-  font-family: "Merriweather", serif;
+#ui-messages {
+  align-items: center;
+  border: 2px solid #ccc;
+  display: flex;
+  height: 80px;
+  justify-content: center;
+  margin-top: 20px;
+  padding: 10px;
   width: 100%;
 }
 
-#interactions h2 {
-  margin-bottom: 0;
+#message {
+  color: #000;
   text-align: center;
-}
-
-#interactions h3 {
-  margin: 0;
 }
 
 #game-ctrls {
@@ -195,21 +197,37 @@ td {
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
+  margin-top: 20px;
   width: 100%;
 }
 
-#ui-messages {
-  align-items: center;
-  border: 2px solid #ccc;
+#place {
+  align-items: flex-start;
   display: flex;
-  height: 60px;
+  flex-flow: row wrap;
   justify-content: center;
   width: 100%;
 }
 
-#message {
-  color: #000;
+#game-ctrls h2,
+#game-ctrls h3 {
+  color: #777f92;
+  font-family: "Merriweather", serif;
+  font-weight: 500;
+  width: 100%;
+}
+
+#game-ctrls h2 {
+  margin-bottom: 0;
   text-align: center;
+}
+
+#select-ctrls {
+  align-items: flex-start;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  width: 100%;
 }
 
 #game-ctrls label {
@@ -239,25 +257,22 @@ td {
   box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
   color: white;
   outline: none;
-  padding: 6px;
+  padding: 10px;
   width: 70%;
   -webkit-appearance: button;
 }
 
-#move,
-#report {
-  align-items: center;
+#place-btn {
+  align-items: flex-start;
   display: flex;
-  flex-flow: row wrap;
   justify-content: center;
-  margin: 10px 0;
   width: 100%;
 }
 
 button {
   align-items: center;
   background-color: #1e8449;
-  border-radius: 5px;
+  border-radius: 3px;
   border-style: none;
   box-shadow: rgba(39, 174, 96, 0.15) 0 4px 9px;
   color: #fff;
@@ -265,10 +280,8 @@ button {
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
-  margin: 10px 0;
-  padding: 6px 0;
-  touch-action: manipulation;
-  width: 30%;
+  padding: 10px 0;
+  width: 35%;
 }
 
 button:hover {
@@ -278,22 +291,54 @@ button:hover {
 }
 
 #submit {
-  margin: 15px 0 30px;
+  margin: 20px 0;
 }
 
-#rotate-robot-ctrls {
+#secondary-ctrls {
   align-items: flex-start;
   display: flex;
   flex-flow: row wrap;
-  justify-content: space-around;
-  margin-bottom: 15px;
+  justify-content: center;
+  margin-bottom: 30px;
   width: 100%;
 }
 
+#rotate {
+  align-items: flex-start;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+#rotate-left,
+#rotate-right {
+  align-items: flex-start;
+  display: flex;
+  justify-content: center;
+  width: 35%;
+}
+
+.rotate-btn {
+  width: 100%;
+}
+
+#move,
+#report {
+  align-items: center;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+/**************************TABLET STYLES**************************/
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
   #game-ui {
-    width: 60%;
+    width: 80%;
   }
 
   td {
@@ -304,8 +349,22 @@ button:hover {
   .robot .fa-solid {
     font-size: 25px;
   }
+
+  #ui-messages {
+    height: 80px;
+  }
+
+  #game-ctrls {
+    justify-content: space-between;
+  }
+
+  #place,
+  #secondary-ctrls {
+    width: 40%;
+  }
 }
 
+/**************************DESKTOP STYLES**************************/
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
   #game-ui {
@@ -333,52 +392,46 @@ button:hover {
     width: 50%;
   }
 
-  #game-ctrls {
-    justify-content: space-between;
-  }
-
   #ui-messages {
-    height: 50px;
+    height: 100px;
+    margin-top: 0;
   }
 
-  #game-ctrls label {
-    width: 35%;
+  #place,
+  #secondary-ctrls {
+    width: 45%;
   }
 
-  #place-item,
+  #place-object,
   #select-row,
   #select-column,
   #select-facing-direction {
-    width: 50%;
+    width: 100%;
+  }
+
+  #game-ctrls label {
+    width: 30%;
   }
 
   #object,
   #row,
   #column,
   #facing {
-    width: 50%;
+    width: 60%;
+  }
+
+  #secondary-ctrls {
+    justify-content: center;
   }
 
   #move,
   #report {
-    align-items: flex-start;
-    justify-content: flex-start;
     margin: 6px 0;
   }
 
   button {
-    margin-right: 40px;
-    padding: 8px 0;
-    width: 25%;
-  }
-
-  #rotate-robot-ctrls {
-    justify-content: flex-start;
-    width: 100%;
-  }
-
-  #submit {
-    width: 25%;
+    padding: 10px 0;
+    width: 100px;
   }
 }
 
