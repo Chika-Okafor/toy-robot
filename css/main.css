@@ -150,9 +150,26 @@ td {
   border: 1px solid #777f92;
   background-color: #fff;
   display: flex;
-  height: 50px;
+  height: 48px;
   justify-content: space-evenly;
-  width: 50px;
+  width: 48px;
+}
+
+.col-number,
+.row-number {
+  color: #777f92;
+  font-size: 0.7em;
+  font-weight: bold;
+  border: none;
+}
+
+.col-number {
+  height: 30px;
+  justify-content: center;
+}
+
+.row-number {
+  width: 30px;
 }
 
 .robot {
@@ -342,7 +359,20 @@ button:hover {
   }
 
   td {
-    height: 70px;
+    height: 80px;
+    width: 80px;
+  }
+
+  .col-number,
+  .row-number {
+    font-size: 1em;
+  }
+
+  .col-number {
+    height: 40px;
+  }
+
+  .row-number {
     width: 70px;
   }
 
@@ -378,9 +408,8 @@ button:hover {
   }
 
   td {
-    border: 2px solid #777f92;
-    height: 110px;
-    width: 110px;
+    height: 100px;
+    width: 100px;
   }
 
   .robot .fa-solid {
